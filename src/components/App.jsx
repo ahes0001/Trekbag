@@ -16,6 +16,27 @@ function App() {
     setItems([...items, newItem]);
   }
 
+  const handleRomoveAllItems = () => {
+    setItems([]);
+  }
+  // function: reset items to initial state
+
+  const handleResetItems = () => {
+    setItems(initialItems);
+  }
+  // Mark all as complete
+  const handleMarkAllAsComplete = () => {
+    const newItems = items.map((item) => ({ ...item, packed: true }));
+    setItems(newItems);
+  }
+
+  // mark all as incomplete
+  const handleMarkAllAsIncomplete = () => {
+    const newItems = items.map((item) => ({ ...item, packed: false }));
+    setItems(newItems);
+  }
+  
+
   return (
     <>
     <BackgroundHeading />
@@ -23,7 +44,13 @@ function App() {
     <main>
       <Header />
       <ItemList items = {items} />
-      <Sidebar handleAddItem = {handleAddItem}/>
+      <Sidebar 
+      handleRomoveAllItems = {handleRomoveAllItems}
+      handleResetItems = {handleResetItems}
+      handleAddItem = {handleAddItem}
+      handleMarkAllAsComplete = {handleMarkAllAsComplete}
+      handleMarkAllAsIncomplete = {handleMarkAllAsIncomplete}
+      />
     </main>
 
     <Footer />
