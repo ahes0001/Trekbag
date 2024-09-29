@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import Button from "./Button";
 
 
-export default function AddItemForm({ handleAddItem }) {
+export default function AddItemForm({ onAddItem }) {
   const [itemName, setItemName] = useState("");
   const inputRef = useRef();
 
@@ -22,7 +22,7 @@ export default function AddItemForm({ handleAddItem }) {
 
 
     
-    handleAddItem(itemName);
+      onAddItem(itemName);
     setItemName("");
   }
   
