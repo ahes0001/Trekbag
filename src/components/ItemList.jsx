@@ -1,7 +1,24 @@
+
+import { initialItems } from "../lib/constants";
+import { useState } from "react";
+
 export default function ItemList() {
+  const [items, setItems] = useState(initialItems);
+
   return (
-    <div>
-      ItemList
-    </div>
-  )
+    <ul>
+      {items.map((item) => <Item key = {item.id} item = {item}/>)}
+    </ul>
+  );
+}
+
+function Item({ item }) {
+  return (
+    <ul>
+      <li className="item">
+         <label ><input type="checkbox"/> {item.name}</label>
+         <button>❌</button>
+      </li>
+    </ul>
+  );
 }
