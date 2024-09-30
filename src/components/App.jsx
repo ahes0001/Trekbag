@@ -10,6 +10,10 @@ import { initialItems } from "../lib/constants"
 function App() {
   const [items, setItems] = useState(initialItems);
 
+  const getLengthOfItems = items.length;
+
+  const itemsPacked = items.filter((item) => item.packed).length;
+
   const handleAddItem = (newItemText) => {
     const newItem = { name: newItemText.trim(), packed: false, id: new Date().getTime() };
 
@@ -50,6 +54,10 @@ function App() {
     });
     setItems(newItems);
   }
+
+ 
+
+  
   
 
   return (
@@ -57,7 +65,7 @@ function App() {
     <BackgroundHeading />
 
     <main>
-      <Header />
+      <Header getLengthOfItems = {getLengthOfItems} itemsPacked = {itemsPacked}/>
       <ItemList items = {items}
       handleRemoveItem = {handleRemoveItem} 
       handleToggleItem = {handleToggleItem}/>
