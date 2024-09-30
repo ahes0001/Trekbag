@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import BackgroundHeading from "./BackgroundHeading"
 import Footer from "./Footer"
 import Header from "./Header"
@@ -8,7 +8,9 @@ import { initialItems } from "../lib/constants"
 
 
 function App() {
-  const [items, setItems] = useState(initialItems);
+
+  const [items, setItems] = useState(() => JSON.parse(localStorage.getItem("items")) || initialItems);
+
 
   const getLengthOfItems = items.length;
 
@@ -54,6 +56,11 @@ function App() {
     });
     setItems(newItems);
   }
+
+  // input: funcation and array.
+  useEffect(() => {
+    localStorage.setItem("items", JSON.stringify(items));
+  }, [items]);
 
  
 
