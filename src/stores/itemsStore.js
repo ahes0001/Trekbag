@@ -1,8 +1,9 @@
 import { create } from "zustand";
 import { initialItems } from "../lib/constants";
+import { persist } from "zustand/middleware";
 
 // in Zustand objects will be automically shallowly merged into set state no need to spread operator unline setState in React
-export const useItemStore = create((set)=> ({
+export const useItemStore = create(persist((set)=> ({
     items: initialItems,
     addItem:(newItemText) => {
         const newItem = { name: newItemText.trim(), packed: false, id: new Date().getTime() };
@@ -44,4 +45,8 @@ export const useItemStore = create((set)=> ({
         });
     },
 
-}));
+}),{
+    name: "items-storage"
+}
+)
+);
