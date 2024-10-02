@@ -1,6 +1,6 @@
 
-export default function Counter({getLengthOfItems, itemsPacked}) {
+export default function Counter({getLengthOfItems, numOfItemsPacked}) {
   return (
-    <p><b>{itemsPacked} / {getLengthOfItems} items packed</b></p>
+    <p><b>{numOfItemsPacked} / {getLengthOfItems} items packed</b></p>
   )
 }
